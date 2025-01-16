@@ -1,0 +1,1 @@
+# jitta_stock_ranking
