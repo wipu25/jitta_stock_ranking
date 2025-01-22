@@ -1,5 +1,4 @@
 # Jitta Stock Ranking
-
 This project using MVC as a design pattern. While its not that clear transparency since GraphQL dependencies have been provide as a service layer for the whole application.
 
 ## Project Structure
