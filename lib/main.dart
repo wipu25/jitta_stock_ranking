@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:stock_ranking/presentation/ui/stock_list_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:stock_ranking/presentation/ui/stock_detail/stock_detail_page.dart';
+import 'package:stock_ranking/presentation/ui/stock_list/stock_list_page.dart';
+import 'package:stock_ranking/util/colors.dart';
+import 'package:stock_ranking/util/routes.dart';
+import 'package:stock_ranking/util/strings.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await initHiveForFlutter();
+  runApp(ProviderScope(child: RankingScoreApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class RankingScoreApp extends StatelessWidget {
+  const RankingScoreApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stock Ranking',
+      title: Strings.stockRanking,
+      initialRoute: '/',
+      routes: {
+        Routes.listPage: (context) => StockListPage(),
+        Routes.detailPage: (context) => StockDetailPage()
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: AppBarTheme(backgroundColor: JittaColors.primaryColor),
+        scaffoldBackgroundColor: JittaColors.bgColor,
         useMaterial3: true,
       ),
-      home: const StockListPage(),
     );
   }
 }
