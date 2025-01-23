@@ -9,6 +9,7 @@ import 'package:stock_ranking/data/model/exception_model.dart'
     as custom_exception;
 
 part 'generated/sector_type_list_provider.g.dart';
+
 final sectorTypeFetchState =
     StateProvider<FetchState>((ref) => FetchState.idle);
 

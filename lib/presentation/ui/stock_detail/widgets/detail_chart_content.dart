@@ -14,7 +14,7 @@ class DetailChartContent extends ConsumerWidget {
   const DetailChartContent(this.data, {super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CustomBorderContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,9 +35,12 @@ class DetailChartContent extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 12,),
-
-          const SizedBox(height: 12,),
+          const SizedBox(
+            height: 12,
+          ),
+          const SizedBox(
+            height: 12,
+          ),
           chartDisplay(ref.watch(selectedChartState))
         ],
       ),

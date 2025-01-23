@@ -6,8 +6,8 @@ part 'generated/stock_list_item_model.g.dart';
 
 @freezed
 class JittaRankingModel with _$JittaRankingModel {
-  factory JittaRankingModel(
-      {required JittaRankingListModel jittaRanking}) = _JittaRankingModel;
+  factory JittaRankingModel({required JittaRankingListModel jittaRanking}) =
+      _JittaRankingModel;
 
   factory JittaRankingModel.fromJson(Map<String, Object?> json) =>
       _$JittaRankingModelFromJson(json);

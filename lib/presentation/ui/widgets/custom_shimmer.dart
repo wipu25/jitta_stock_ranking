@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomShimmer extends StatelessWidget {
-
   final double alpha;
   final double height;
   const CustomShimmer({super.key, required this.alpha, required this.height});

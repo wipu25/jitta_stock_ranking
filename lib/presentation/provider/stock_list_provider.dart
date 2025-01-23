@@ -12,7 +12,6 @@ final scrollControllerProvider = Provider((ref) => ScrollController());
 final isToTopDisplayProvider = StateProvider<bool>((ref) => false);
 final stockListFetchState = StateProvider<FetchState>((ref) => FetchState.idle);
 
-
 @riverpod
 class StockList extends _$StockList {
   @override
@@ -29,18 +28,17 @@ class StockList extends _$StockList {
     ref.read(stockListFetchState.notifier).state = FetchState.loading;
     final response = await client.query(ref.read(queryOptionProvider));
 
-    if(response.hasException) {
+    if (response.hasException) {
       ref.read(stockListFetchState.notifier).state = FetchState.error;
       throw NetworkException(response.exception.toString());
     }
 
-    if(response.data == null) {
+    if (response.data == null) {
       ref.read(stockListFetchState.notifier).state = FetchState.error;
       throw ResponseEmptyException('Response is Empty');
     }
 
-    final newValue =
-        JittaRankingModel.fromJson(response.data!).jittaRanking;
+    final newValue = JittaRankingModel.fromJson(response.data!).jittaRanking;
     final newList = state.data + newValue.data;
 
     state = newValue.copyWith(data: newList);

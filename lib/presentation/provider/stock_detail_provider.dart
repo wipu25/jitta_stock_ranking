@@ -7,14 +7,14 @@ import 'package:stock_ranking/data/model/stock_detail_model.dart';
 import 'package:stock_ranking/presentation/provider/graph_ql_provider.dart';
 import 'package:stock_ranking/presentation/provider/stock_item_provider.dart';
 import 'package:stock_ranking/data/model/exception_model.dart'
-as custom_exception;
+    as custom_exception;
 part 'generated/stock_detail_provider.g.dart';
 
 final selectedTableState = StateProvider<int>((ref) => 0);
 final selectedChartState = StateProvider<int>((ref) => 0);
 
 final stockDetailFetchState =
-StateProvider<FetchState>((ref) => FetchState.idle);
+    StateProvider<FetchState>((ref) => FetchState.idle);
 
 @riverpod
 class StockDetail extends _$StockDetail {

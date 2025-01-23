@@ -17,11 +17,9 @@ class SectorDropDown extends ConsumerStatefulWidget {
 }
 
 class _SectorDropDownState extends ConsumerState<SectorDropDown> {
-
   @override
   void initState() {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(sectorTypeListProvider.notifier).fetchData();
     });
     super.initState();
@@ -30,23 +28,31 @@ class _SectorDropDownState extends ConsumerState<SectorDropDown> {
   @override
   Widget build(BuildContext context) {
     final sector =
-        StockListQueryModel.fromJson(ref.watch(queryOptionProvider).variables).sectors ?? 'all';
+        StockListQueryModel.fromJson(ref.watch(queryOptionProvider).variables)
+                .sectors ??
+            'all';
     final fetchState = ref.watch(sectorTypeFetchState);
     return CustomDropDown<String>(
-      onTap: fetchState == FetchState.error ? () {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(CustomSnackBar.errorSnackBar('Some ${Strings.sector} missing'));
-        ref.read(sectorTypeListProvider.notifier).fetchData();
-      } : null,
+      onTap: fetchState == FetchState.error
+          ? () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                  CustomSnackBar.errorSnackBar(
+                      'Some ${Strings.sector} missing'));
+              ref.read(sectorTypeListProvider.notifier).fetchData();
+            }
+          : null,
       onChange: (value) async {
         try {
           ref.read(queryOptionProvider.notifier).updateVariable(sectors: value);
           await ref.read(stockListProvider.notifier).refetchData();
-        } catch(e) {
+        } catch (e) {
           final string = value?.replaceAll('_', ' ');
-          if(context.mounted) {
+          if (context.mounted) {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(CustomSnackBar.errorSnackBar('fetching $string ${Strings.sector}'));
+            ScaffoldMessenger.of(context).showSnackBar(
+                CustomSnackBar.errorSnackBar(
+                    'fetching $string ${Strings.sector}'));
           }
         }
       },
@@ -55,7 +61,7 @@ class _SectorDropDownState extends ConsumerState<SectorDropDown> {
       item: ref
           .watch(sectorTypeListProvider)
           .map((item) =>
-          DropdownMenuItem<String?>(value: item.id, child: Text(item.name)))
+              DropdownMenuItem<String?>(value: item.id, child: Text(item.name)))
           .toList(),
     );
   }

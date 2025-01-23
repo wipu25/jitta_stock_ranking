@@ -21,7 +21,10 @@ class DetailSummaryContent extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(Strings.description, style: CustomTextStyle.itemHeading2,),
+                Text(
+                  Strings.description,
+                  style: CustomTextStyle.itemHeading2,
+                ),
                 const SizedBox(height: 8),
                 RichText(
                     text: TextSpan(
@@ -47,7 +50,10 @@ class DetailSummaryContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(Strings.moreInfoLink, style: CustomTextStyle.itemHeading2,),
+                  Text(
+                    Strings.moreInfoLink,
+                    style: CustomTextStyle.itemHeading2,
+                  ),
                   ...stockDetailData.company!.link!.map(
                     (item) => GestureDetector(
                         onTap: () => launchUrl(Uri.parse(item.url!)),

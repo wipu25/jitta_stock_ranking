@@ -80,7 +80,7 @@ class ComparisonModel with _$ComparisonModel {
 
 @freezed
 class StockDetailModel with _$StockDetailModel {
-  @JsonSerializable(fieldRename:FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory StockDetailModel({
     String? id,
     bool? isFollowing,

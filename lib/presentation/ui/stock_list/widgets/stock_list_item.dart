@@ -19,8 +19,7 @@ class StockListItem extends ConsumerWidget {
       child: GestureDetector(
         onTap: () async {
           ref.read(stockItemProvider.notifier).state = data;
-          await Navigator.pushNamed(
-              context, Routes.detailPage);
+          await Navigator.pushNamed(context, Routes.detailPage);
           ref.read(stockItemProvider.notifier).state = null;
         },
         child: CustomBorderContainer(

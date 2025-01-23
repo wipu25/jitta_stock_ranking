@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stock_ranking/data/model/fetch_state_model.dart';
 import 'package:stock_ranking/presentation/provider/graph_ql_provider.dart';
-import 'package:stock_ranking/presentation/provider/stock_item_provider.dart';
 import 'package:stock_ranking/presentation/provider/stock_list_provider.dart';
 import 'package:stock_ranking/presentation/ui/stock_list/widgets/market_drop_down.dart';
 import 'package:stock_ranking/presentation/ui/stock_list/widgets/sector_drop_down.dart';
@@ -11,7 +9,6 @@ import 'package:stock_ranking/presentation/ui/stock_list/widgets/stock_list_item
 import 'package:stock_ranking/presentation/ui/widgets/custom_shimmer.dart';
 import 'package:stock_ranking/util/colors.dart';
 import 'package:stock_ranking/util/custom_text_style.dart';
-import 'package:stock_ranking/util/routes.dart';
 import 'package:stock_ranking/util/strings.dart';
 
 class StockListPage extends ConsumerStatefulWidget {

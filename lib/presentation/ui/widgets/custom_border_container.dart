@@ -5,7 +5,8 @@ class CustomBorderContainer extends StatelessWidget {
   final double padding;
   final double? height;
 
-  const CustomBorderContainer({super.key, required this.child, this.padding = 8, this.height});
+  const CustomBorderContainer(
+      {super.key, required this.child, this.padding = 8, this.height});
 
   @override
   Widget build(BuildContext context) {

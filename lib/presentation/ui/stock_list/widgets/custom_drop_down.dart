@@ -3,14 +3,19 @@ import 'package:stock_ranking/util/colors.dart';
 import 'package:stock_ranking/util/custom_text_style.dart';
 
 class CustomDropDown<T> extends StatelessWidget {
-
   final String title;
   final Function()? onTap;
   final Function(T?) onChange;
   final List<DropdownMenuItem<T?>>? item;
   final T value;
 
-  const CustomDropDown({super.key, required this.onChange, this.item, required this.value, required this.title, this.onTap});
+  const CustomDropDown(
+      {super.key,
+      required this.onChange,
+      this.item,
+      required this.value,
+      required this.title,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +31,13 @@ class CustomDropDown<T> extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
             decoration: BoxDecoration(
-              border: Border.all(width: 2,color: JittaColors.primaryColor),
+              border: Border.all(width: 2, color: JittaColors.primaryColor),
               borderRadius: BorderRadius.circular(16),
             ),
             child: DropdownButton<T?>(
                 onTap: () => onTap?.call(),
-                style: CustomTextStyle.itemHeading1.copyWith(color: Colors.black),
+                style:
+                    CustomTextStyle.itemHeading1.copyWith(color: Colors.black),
                 underline: SizedBox.shrink(),
                 isDense: true,
                 icon: SizedBox.shrink(),

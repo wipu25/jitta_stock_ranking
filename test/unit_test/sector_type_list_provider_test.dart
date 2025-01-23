@@ -8,7 +8,7 @@ import 'package:stock_ranking/data/model/stock_list_item_model.dart';
 import 'package:stock_ranking/presentation/provider/graph_ql_provider.dart';
 import 'package:stock_ranking/presentation/provider/sector_type_list_provider.dart';
 import 'package:stock_ranking/data/model/exception_model.dart'
-as custom_exception;
+    as custom_exception;
 
 import 'provider_create_container.dart';
 import 'sector_type_list_provider_test.mocks.dart';
@@ -51,7 +51,7 @@ void main() {
 
     test('fetchData error', () async {
       final queryOptions =
-      QueryOptions(document: gql(GraphQlQuery.sectorQuery));
+          QueryOptions(document: gql(GraphQlQuery.sectorQuery));
 
       when(mockGraphQlClient.query(queryOptions)).thenAnswer((_) async =>
           QueryResult(
@@ -60,7 +60,7 @@ void main() {
               source: QueryResultSource.network));
       try {
         await mockReadProvider.fetchData();
-      } catch(e) {
+      } catch (e) {
         expect(e.runtimeType, custom_exception.NetworkException);
         expect(container.read(sectorTypeFetchState), FetchState.error);
       }

@@ -1,9 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:stock_ranking/data/graph_ql_query.dart';
 import 'package:stock_ranking/data/model/graph_ql_query_model.dart';
-import 'package:stock_ranking/data/model/stock_detail_model.dart';
 import 'package:stock_ranking/util/strings.dart';
 
 part 'generated/graph_ql_provider.g.dart';
@@ -30,14 +28,16 @@ class QueryOption extends _$QueryOption {
           .toJson());
 
   int? getPage() => StockListQueryModel.fromJson(state.variables).page;
-  String? getSector() => StockListQueryModel.fromJson(state.variables).sectors ?? 'all';
+  String? getSector() =>
+      StockListQueryModel.fromJson(state.variables).sectors ?? 'all';
 
   void updateVariable(
       {String? market, String? sectors, int? page, int? limit}) {
     final currentVariables = StockListQueryModel.fromJson(state.variables);
     final newVariables = StockListQueryModel(
         market: market ?? currentVariables.market,
-        sectors: sectors == 'all' ? null : (sectors ?? currentVariables.sectors),
+        sectors:
+            sectors == 'all' ? null : (sectors ?? currentVariables.sectors),
         page: page ?? currentVariables.page,
         limit: limit ?? currentVariables.limit);
     state = state.copyWithOptions(variables: newVariables.toJson());

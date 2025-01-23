@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:stock_ranking/data/model/jitta_model.dart';
 import 'package:stock_ranking/data/model/stock_detail_model.dart';
 import 'package:stock_ranking/data/model/stock_list_item_model.dart';
 import 'package:stock_ranking/presentation/ui/widgets/custom_border_container.dart';
 import 'package:stock_ranking/presentation/ui/widgets/label_container.dart';
-import 'package:stock_ranking/presentation/ui/widgets/custom_shimmer.dart';
 import 'package:stock_ranking/util/colors.dart';
 import 'package:stock_ranking/util/custom_text_style.dart';
 import 'package:stock_ranking/util/string_convert.dart';
@@ -25,12 +22,12 @@ class DetailHeaderContent extends StatelessWidget {
       children: [
         if (stockItemData?.title != null)
           Center(
-          child: Text(
-            stockItemData!.title,
-            style:
-                CustomTextStyle.pageSubHeading1.copyWith(color: Colors.black),
+            child: Text(
+              stockItemData!.title,
+              style:
+                  CustomTextStyle.pageSubHeading1.copyWith(color: Colors.black),
+            ),
           ),
-        ),
         if (stockItemData?.nativeName != null)
           Center(
             child: Text(
@@ -62,30 +59,42 @@ class DetailHeaderContent extends StatelessWidget {
             children: [
               if (stockDetailData?.price?.latest?.close != null)
                 Expanded(
-                  child: itemBox(Strings.latestPrice,
-                      stockDetailData!.price?.latest?.close.toString() ?? Strings.nullNumber)),
+                    child: itemBox(
+                        Strings.latestPrice,
+                        stockDetailData!.price?.latest?.close.toString() ??
+                            Strings.nullNumber)),
               if (stockDetailData?.lossChance?.last != null)
                 Expanded(
-                  child: itemBox(
-                      Strings.lossChance,
-                      stockDetailData!.lossChance?.last?.toStringAsFixed(2) ??
-                          Strings.nullNumber)),
+                    child: itemBox(
+                        Strings.lossChance,
+                        stockDetailData!.lossChance?.last?.toStringAsFixed(2) ??
+                            Strings.nullNumber)),
               if (stockItemData?.exchange != null)
-                Expanded(child: itemBox(Strings.exchange, stockItemData!.exchange)),
+                Expanded(
+                    child: itemBox(Strings.exchange, stockItemData!.exchange)),
               if (stockItemData?.jittaScore != null)
                 Expanded(
-                  child: itemBox(Strings.score, stockItemData!.jittaScore.toString())),
+                    child: itemBox(
+                        Strings.score, stockItemData!.jittaScore.toString())),
             ],
           ),
         ),
-        const SizedBox(height: 12,),
+        const SizedBox(
+          height: 12,
+        ),
         if (stockDetailData?.lossChance?.updatedAt != null)
-          remarkText('${Strings.remarkStar} ${Strings.lossChance} ${Strings.updatedAt}',
-              StringConvert.stringToDateTime(stockDetailData!.lossChance!.updatedAt!)),
+          remarkText(
+              '${Strings.remarkStar} ${Strings.lossChance} ${Strings.updatedAt}',
+              StringConvert.stringToDateTime(
+                  stockDetailData!.lossChance!.updatedAt!)),
         if (stockDetailData?.price?.latest?.datetime != null)
-          remarkText('${Strings.remarkStar} ${Strings.price} ${Strings.updatedAt}',
-              StringConvert.stringToDateTime(stockDetailData!.price!.latest!.datetime!)),
-        const SizedBox(height: 12,),
+          remarkText(
+              '${Strings.remarkStar} ${Strings.price} ${Strings.updatedAt}',
+              StringConvert.stringToDateTime(
+                  stockDetailData!.price!.latest!.datetime!)),
+        const SizedBox(
+          height: 12,
+        ),
       ],
     );
   }

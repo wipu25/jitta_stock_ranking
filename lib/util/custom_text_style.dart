@@ -10,5 +10,6 @@ class CustomTextStyle {
   static const itemHeading2 =
       TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
   static const labelHeading1 = TextStyle(fontSize: 14);
-  static const remarkContent1 = TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey);
+  static const remarkContent1 =
+      TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey);
 }

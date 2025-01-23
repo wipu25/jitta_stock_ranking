@@ -40,15 +40,13 @@ class _StockDetailPageState extends ConsumerState<StockDetailPage> {
               icon: Icon(Icons.arrow_back_ios)),
           title: Column(
             children: [
-              Consumer(
-                builder: (context, ref, _) {
-                  final stockItemData = ref.watch(stockItemProvider);
-                  return Text(
-                    stockItemData?.symbol ?? 'No Symbol',
-                    style: CustomTextStyle.pageHeading1,
-                  );
-                }
-              ),
+              Consumer(builder: (context, ref, _) {
+                final stockItemData = ref.watch(stockItemProvider);
+                return Text(
+                  stockItemData?.symbol ?? 'No Symbol',
+                  style: CustomTextStyle.pageHeading1,
+                );
+              }),
             ],
           ),
           actions: [
@@ -126,8 +124,11 @@ class _StockDetailPageState extends ConsumerState<StockDetailPage> {
         );
       case FetchState.error:
         return CustomBorderContainer(
-          height: 250,
-            child: Center(child: Text(Strings.errorDetailPage, style: CustomTextStyle.itemHeading1.copyWith(color: Colors.grey))));
+            height: 250,
+            child: Center(
+                child: Text(Strings.errorDetailPage,
+                    style: CustomTextStyle.itemHeading1
+                        .copyWith(color: Colors.grey))));
     }
   }
 }

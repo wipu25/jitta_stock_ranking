@@ -1,6 +1,1 @@
-
-enum FetchState {
-  idle,
-  loading,
-  error
-}
+enum FetchState { idle, loading, error }

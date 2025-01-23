@@ -38,7 +38,8 @@ class Strings {
   static const market = 'Market';
 
   static const errorHeading = 'ERROR: ';
-  static const stockListError = 'Ooops something went wrong please try again later';
+  static const stockListError =
+      'Ooops something went wrong please try again later';
   static const retry = 'Retry';
 
   static const latestPrice = 'Latest Price';

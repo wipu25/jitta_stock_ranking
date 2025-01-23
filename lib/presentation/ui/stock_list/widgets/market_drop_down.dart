@@ -23,7 +23,8 @@ class MarketDropdown extends ConsumerWidget {
           if (context.mounted) {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             ScaffoldMessenger.of(context).showSnackBar(
-                CustomSnackBar.errorSnackBar(' fetching $value  ${Strings.market}'));
+                CustomSnackBar.errorSnackBar(
+                    ' fetching $value  ${Strings.market}'));
           }
         }
       },
